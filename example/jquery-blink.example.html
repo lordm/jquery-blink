@@ -31,7 +31,7 @@
 				padding: 5px;
 			}
 		</style>
-		<script type='text/javascript' src='http://code.jquery.com/jquery-1.5.min.js'></script>
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.min.js'></script>
 		<script type='text/javascript' src='../lib/jquery.blink.js'></script>
 		<script type='text/javascript'>
 
@@ -47,9 +47,11 @@
 							onMaxBlinks: function() {
 								$('#content').fadeIn('slow');
 							},
-							onBlink: function(i) {
+							onBlinkOff: function(i, callback) {
+								$(this).fadeTo(500, 1);
 								$(this).css('color', colors[i%3]);
 								$('body').append( i + ' - ' );
+								callback && callback();
 							}
 					});
 			});
